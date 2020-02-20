@@ -1,0 +1,39 @@
+.container{
+  display: flex;
+  flex-wrap: wrap ;
+}
+
+.cardcontainer{
+  margin-top: 20px;
+  justify-content: center;
+
+}
+
+
+.card{
+  margin: 1%;
+
+}
+
+
+
+.searchform{
+  margin: auto;
+  width: 50%;
+}
+
+.open_new{
+ font-size: 1rem;
+ position:
+ absolute;
+ bottom: 5px;
+ right: 5px;
+}
+
+.filterbar{
+  padding-top: 40px;
+}
+
+.filterselect{
+  margin-right: 25px;
+}

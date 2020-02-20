@@ -1,0 +1,98 @@
+<div class="container" style="display:inline;margin: 20px; text-align: center;">
+
+  <h4>Insect Pest and Disease Library</h4>
+  <h6><a href="http://sarai.ph/about-us" target="new">SARAi Project 2.4 Insect Pest and Disease Advisory System (IPDAS)</a></h6>
+</div>
+
+
+<div class="container" style="margin-top: 20px;">
+  <form class="searchform">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
+  </form>
+</div>
+
+
+<div class="container filterbar">
+
+<select class="custom-select filterselect" style="width: 25%;">
+  <option selected>All Crops</option>
+  <option value="1">Rice</option>
+  <option value="2">Corn</option>
+  <option value="3">Cacao</option>
+  <option value="3">Coffee</option>
+</select> 
+
+<select class="custom-select  filterselect" style="width: 25%;">
+  <option selected>Pest and Disease</option>
+  <option value="1">Pest</option>
+  <option value="2">Disease</option>
+</select> 
+
+
+
+</div>
+
+
+
+
+
+  <!-- 
+Disease
+
+tag	
+crop	
+disease	
+local names	
+causal type	
+pathogen (causal organsm)	
+alternate host	
+crop stage affected	
+affected plant parts	
+general description	
+How to Detect and Identify the Disease	
+favorable environment for disease emergence	
+Strategies for Integrated Disease Management	
+image url	
+citation
+
+
+Pest
+tag	
+plant affected	
+common name	
+Order/Family:	
+scientific name	
+other names	
+filipino names	
+stages of development	
+description	
+host range	
+damage characteristics	
+management practice	
+image url	
+citation
+
+ -->
+
+
+
+
+<div class="container cardcontainer">
+
+  <div class="card" [style.width.%]="width" *ngFor="let pest of pestsdata">
+    <img src="./assets/pest.jpeg" class="card-img-top" alt="./assets/pest.jpeg">
+    <div class="card-body">
+      <h5 class="card-title">{{pest.common_name}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{pest.scientific_name}}</h6>
+      <h6 class="card-subtitle">Plant: {{pest.plant_affected}}</h6>
+      <a routerLink="/item/{{pest.tag}}" [state]="{data: pest }">
+        <i class="material-icons open_new">
+          open_in_new
+        </i>
+      </a>
+    </div>
+  </div>
+
+
+</div>
