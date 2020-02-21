@@ -1,5 +1,5 @@
 <div class="container breadcrumb">
-  <a routerLink='/main' style="padding-right: 10px;">Home</a> /  <span style="padding-left: 10px;">{{pest.common_name}}</span>
+  <a routerLink='/' style="padding-right: 10px;">Home</a> /  <a href="{{pest.plant_affected}}" style="padding: 0px 10px;">{{pest.plant_affected | titlecase}}</a> /  <span style="padding-left: 10px;">{{pest.common_name}}</span>
   
 </div>
 <div class="container namerow">
@@ -36,7 +36,7 @@
   </div>
   <div class="imagecol">
     <div style="margin:auto;">
-      <img src="./assets/pest2.jpg" style="width: 100%;">
+    <img src="{{pest.image_url}}" class="card-img-top" alt="./assets/pest.jpeg">
     </div>
 
 

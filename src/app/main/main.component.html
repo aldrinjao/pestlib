@@ -5,132 +5,123 @@
 </div>
 
 
-<div class="container" style="margin-top: 20px;">
-  <form class="searchform">
-    <input name="term" class="form-control mr-sm-2" type="search" (keyup)='p=1' placeholder="Search by Common Name" aria-label="Search" [(ngModel)]="term">
-   
-  </form>
-</div>
+<div class="container" style="width: 100%;">
 
+  <div class="cardcontainer">
+    <a routerLink="rice">
+      <div class="card"  (click)="a()">
 
-<div class="container filterbar">
-<div style="display:flex;">
-  <select class="custom-select filterselect" name="cropTerm" [(ngModel)]="cropTerm" (change)="filterCrop();">
-    <option value="All">All Crops</option>
-    <option value="rice">Rice</option>
-    <option value="corn">Corn</option>
-    <option value="cacao">Cacao</option>
-    <option value="coffee">Coffee</option>
-  </select> 
-
-  <select class="custom-select filterselect" name="pestOrDiseaseTerm" [(ngModel)]="pestOrDiseaseTerm" (change)="filterCrop();">
-    <option value="All">Pest and Disease</option>
-    <option value="pest">Pest</option>
-    <option value="disease">Disease</option>
-  </select> 
-
-  <select [disabled] = "disabledFlag" class="custom-select filterselect" name="diseaseTypeTerm" [(ngModel)]="diseaseTypeTerm" (change)="filterCrop();">
-    <option value="All">All Disease Types</option>
-    <option value="1">Type 1</option>
-    <option value="2">Type 2</option>
-    <option value="2">Type 3</option>
-    <option value="2">Type 4</option>
-  </select> 
-<button type="button" class="btn btn-outline-secondary" (click)='resetfilters()'>Reset</button>
-
-</div>
-<div>
-  <span style="font-size: .8rem">display: </span>
-  <button class='colcountbutton'></button>
-  <button class='colcountbutton'></button>
-  <button class='colcountbutton'></button>
-
-  <span style="font-size: .8rem;margin-left: 10px;">items per page:</span>
-   <select class="custom-select perpageselect" name="itemperpage" [(ngModel)]="itemperpage" (change)="changeitemperpage();">
-      <option value='20'>
-        20
-      </option>
-      <option value='50'>
-        50
-      </option>
-
-      <option value='100'>
-        100
-      </option>
-
-    </select>
-</div>
-
-
-</div>
-
-
-
-
-
-  <!-- 
-Disease
-
-tag	
-crop	
-disease	
-local names	
-causal type	
-pathogen (causal organsm)	
-alternate host	
-crop stage affected	
-affected plant parts	
-general description	
-How to Detect and Identify the Disease	
-favorable environment for disease emergence	
-Strategies for Integrated Disease Management	
-image url	
-citation
-
-
-Pest
-tag	
-plant affected	
-common name	
-Order/Family:	
-scientific name	
-other names	
-filipino names	
-stages of development	
-description	
-host range	
-damage characteristics	
-management practice	
-image url	
-citation
-
- -->
-
-<!-- lagyan ng disease type instead of order/family -->
-
-
-<div class="container cardcontainer">
-
-  <div class="card" [style.width.%]="width" *ngFor="let pest of pestsdata | filter : term | paginate: { itemsPerPage: perpage, currentPage: p }">
-    <img src="./assets/pest.jpeg" class="card-img-top" alt="./assets/pest.jpeg">
-    <div class="card-body">
-      <div class="card-title"  [innerHTML]="pest.common_name | titlecase"></div>
-      <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
-      <br>
-      <span class="card-subtitle" style="font-size: .8rem;">Order: {{pest.order_family}}</span>
-      <a routerLink="/item/{{pest.tag}}">
-        <i class="material-icons open_new">
-          open_in_new
-        </i>
-      </a>
-    </div>
+        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <div class="card-body">
+          <div class="card-title"> Rice</div>
+          <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
+        </div>
+      </div>
+    </a>
   </div>
 
-</div>
+  <div class="cardcontainer">
+    <a routerLink="rice">
+      <div class="card"  (click)="a()">
 
-<div class="container pagecontrol">
+        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <div class="card-body">
+          <div class="card-title"> Rice</div>
+          <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
+        </div>
+      </div>
+    </a>
+  </div>
 
-    <pagination-controls  (pageChange)="test($event)"></pagination-controls>
+  <div class="cardcontainer">
+    <a routerLink="rice">
+      <div class="card"  (click)="a()">
 
+        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <div class="card-body">
+          <div class="card-title"> Rice</div>
+          <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="cardcontainer">
+    <a routerLink="rice">
+      <div class="card"  (click)="a()">
+
+        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <div class="card-body">
+          <div class="card-title"> Rice</div>
+          <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="cardcontainer">
+    <a routerLink="rice">
+      <div class="card"  (click)="a()">
+
+        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <div class="card-body">
+          <div class="card-title" style="color:black"> Rice</div>
+          <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="cardcontainer">
+    <a routerLink="rice">
+      <div class="card"  (click)="a()">
+
+        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <div class="card-body">
+          <div class="card-title"> Rice</div>
+          <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="cardcontainer">
+    <a routerLink="rice">
+      <div class="card"  (click)="a()">
+
+        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <div class="card-body">
+          <div class="card-title" style="color:black"> Rice</div>
+          <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="cardcontainer">
+    <a routerLink="rice">
+      <div class="card"  (click)="a()">
+
+        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <div class="card-body">
+          <div class="card-title"> Rice</div>
+          <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="cardcontainer">
+    <a routerLink="rice">
+      <div class="card"  (click)="a()">
+
+        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <div class="card-body">
+          <div class="card-title"> Rice</div>
+          <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
+        </div>
+      </div>
+    </a>
+  </div>
 
 </div>

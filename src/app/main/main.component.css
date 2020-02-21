@@ -1,66 +1,48 @@
 .container{
   display: flex;
   flex-wrap: wrap ;
-}
-
-.cardcontainer{
-  margin-top: 20px;
   justify-content: center;
-
 }
 
-.card{
-  margin: 1%;
-  background: rgb(250,250,250);
-  box-shadow: 2px 4px rgb(200,200,200);
+a {
+  color: black;
+  text-decoration: none; /* no underline */
 }
 
+.card-body{
+    padding:0.25rem;
+}
 .card-title{
-  font-size:1.6rem;
-  font-weight:500;
+    margin:0;
+    text-align: center;
+}
+.cardcontainer{
+    box-shadow: 2px 2px rgba(50,50,50,0.2);
+    width: 28%;
+    margin: 2%;
+    transition: .5s ease;
 }
 
-.searchform{
-  margin: auto;
-  width: 50%;
+.cardcontainer:hover{
+    box-shadow: 2px 2px rgba(50,50,50,0.4);
+    transition: .5 ease;
+    font-weight: 600;
+
 }
 
-.open_new{
- font-size: 1rem;
- position:
- absolute;
- bottom: 5px;
- right: 5px;
+.card-img-top {
+width: 100%;
+height: 20vh;
+object-fit: cover;
+transition: .5s ease;
+opacity: .9;
 }
 
-.filterbar{
-  padding-top: 40px;
-  justify-content: space-between;
+
+
+.card-img-top:hover{
+  opacity: 1;
 }
 
-.filterselect{
-  margin-right: 25px;
-  min-width: 200px;
-}
 
-.pagecontrol{
-  justify-content: center;
-}
-.pagecontrol ::ng-deep .ngx-pagination{
-    padding-inline-start: 0;
-    
-  }
 
-.perpageselect{
-  width: 64px;
-  height: 26px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  font-size: .8rem;
-}
-
-.colcountbutton{
-  height: 20px;
-  width: 20px;
-  margin: 2px;
-}
