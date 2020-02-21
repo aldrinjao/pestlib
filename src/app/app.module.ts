@@ -12,12 +12,16 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ItemComponent } from './item/item.component';
+import {FilterPipe} from './main/pipe';
+import {FormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    ItemComponent
+    ItemComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,9 @@ import { ItemComponent } from './item/item.component';
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FormsModule,
+    NgxPaginationModule
 
   ],
   providers: [],

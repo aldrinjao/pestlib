@@ -1,44 +1,75 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { ActivatedRoute } from '@angular/router';
 
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
-
-  pest = {
-    item_id: 1,
-    tag: 'PCACAOAPHID',
-    plant_affected: 'cacao',
-    common_name: 'Aphids',
-    order_family: undefined,
-    scientific_name: 'Aphis gossypii Glover',
-    other_names: 'Cotton aphid, melon aphid, betelvine aphid, green aphid, cucurbit aphid',
-    filipino_names: '',
-    stages_of_development: 'Nymphs: 7 days; adults: 20days',
-    // tslint:disable-next-line:max-line-length
-    description: 'The eggs are shiny black and often laid on the bark of fruit trees. The nymphs resembles adult except that they are smaller and wingless. Adult are pear-shaped, color varies from yellowish green, to brownish green, to almost black.',
-  // tslint:disable-next-line:max-line-length
-    host_range: 'Cacao, citrus, cotton, crucifers, cucurbits, gabi, guava, kapok, kenaf, legumes, lettuce, okra, potato, roselle, solanaceous, sweet potato',
-    // tslint:disable-next-line:max-line-length
-    damage_characteristics: 'Suck plant sap. Heavy infestation on leaves may result to cupping downwards and wrinkling that may result to wilting. Infested young plants may have reduced or stunted growth.',
-    // tslint:disable-next-line:max-line-length
-    management_practice: '<b>Cultural method:</b><ol><li>Infested crops should be destroyed immediately after harvest to prevent dispersal.</li><li>If continuous cropping is implicated in retention of aphid population, crop-free period is needed.</li></ol><br/><b>Biological control:</b><ol><li>Release of Braconid wasps.</li></ol>',
-    image_url: '',
-    citation: ''
-  }
+  pest = {};
+  urltag;
+  items: Observable<any[]>;
+  filipinoFlag = true;
 
 
-  constructor() {
+  constructor(db: AngularFireDatabase, private route: ActivatedRoute) {
+    window.scrollTo(0, 0);
+    this.items = db.list('items').valueChanges();
+    this.urltag = this.route.snapshot.paramMap.get('tag');
 
-    // console.log('history.state.data :', history.state);
+    const myObserver = {
+      next: x => {
+        x.forEach(sample => {
+
+          if (sample.tag === this.urltag) {
+
+            const tempObject = {
+
+              // insert the id too
+              item_id: sample.item_id,
+              tag: sample.tag,
+              plant_affected: sample.plant_affected,
+              common_name: sample.common_name,
+              order_family: sample.order_family,
+              scientific_name: sample.scientific_name,
+              other_names: sample.other_names,
+              filipino_names: sample.filipino_names,
+              stages_of_development: sample.stages_of_development,
+              description: sample.description,
+              host_range: sample.host_range,
+              damage_characteristics: sample.damage_characteristics,
+              management_practice: sample.management_practice,
+              image_url: sample.image_url,
+              citation: sample.citation
+            };
 
 
 
+            this.pest = tempObject;
+
+
+
+
+
+
+
+          }
+        });
+      },
+      error: err => console.error('Observer got an error: ' + err),
+      complete: () => console.log('Observer got a complete notification'),
+    };
+
+    this.items.subscribe(myObserver);
   }
 
   ngOnInit() {
+
+
   }
+
 
 }

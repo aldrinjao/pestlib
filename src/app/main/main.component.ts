@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Input, Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 
 import { Observable } from 'rxjs';
@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 
 export interface Pest {
   item_id: string;
+  entry_type: string;
   tag: string;
   plant_affected: string;
   common_name: string;
@@ -29,15 +30,26 @@ export interface Pest {
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
+
 })
 
 export class MainComponent implements OnInit {
 
   items: Observable<any[]>;
   pestsdata: Pest[] = [];
+  completepestsdata: Pest[] = [];
+  selectpestsdata: Pest[] = [];
+  cropTerm = 'All';
+  pestOrDiseaseTerm = 'All';
+  diseaseTypeTerm = 'All';
+  disabledFlag = false;
 
   // change to 23, 31, 48 for 4, 3, 2 on a page
   width = 23;
+  p = 1;
+  perpage = 20;
+  itemperpage = 20;
+  term = '';
 
   constructor(db: AngularFireDatabase) {
 
@@ -52,9 +64,10 @@ export class MainComponent implements OnInit {
 
             // insert the id too
             item_id: sample.item_id,
+            entry_type: sample.entry_type,
             tag: sample.tag,
             plant_affected: sample.plant_affected,
-            common_name: sample.common_name,
+            common_name: sample.common_name.toLowerCase(),
             order_family: sample.order_family,
             scientific_name: sample.scientific_name,
             other_names: sample.other_names,
@@ -68,12 +81,15 @@ export class MainComponent implements OnInit {
             citation: sample.citation
           };
           this.pestsdata.push(tempObject);
-
+          this.completepestsdata = this.pestsdata;
         });
-        console.log(this.pestsdata);
+        this.pestsdata = this.shuffle(this.pestsdata);
+
       },
       error: err => console.error('Observer got an error: ' + err),
-      complete: () => console.log('Observer got a complete notification'),
+      complete: () => console.log('Observer got a complete notification')
+
+
     };
 
     this.items.subscribe(myObserver);
@@ -83,6 +99,92 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  private shuffle(array) {
+    let currentIndex = array.length;
+    let randomIndex;
+    let temporaryValue;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
+
+  filterCrop() {
+    this.p = 1;
+
+    if (this.pestOrDiseaseTerm === 'pest') {
+      this.disabledFlag = true;
+      this.diseaseTypeTerm = 'All';
+    } else {
+      this.disabledFlag = false;
+    }
+
+
+    let croptemp = this.completepestsdata;
+    let cropordiseasetemp = this.completepestsdata;
+
+    if ((this.cropTerm !== 'All')) {
+      croptemp = this.completepestsdata.filter(f => {
+
+        return (f.plant_affected === this.cropTerm);
+      });
+    } else {
+      croptemp = this.completepestsdata;
+    }
+
+    if ((this.pestOrDiseaseTerm !== 'All')) {
+      cropordiseasetemp = this.completepestsdata.filter(f => {
+
+        return (f.entry_type === this.pestOrDiseaseTerm);
+      });
+    } else {
+      cropordiseasetemp = this.completepestsdata;
+    }
+
+    // intersect 2 arrays
+    const result = croptemp.filter(v => { // iterate over the array
+      // check sample present in the second array
+      return cropordiseasetemp.indexOf(v) > -1;
+      // or array2.includes(v)
+    });
+
+    this.pestsdata = result;
+
+  }
+
+  changeitemperpage() {
+    this.p = 1;
+    this.perpage = this.itemperpage;
+  }
+
+  test(event) {
+    console.log(this.pestsdata);
+    this.p = event;
+
+  }
+
+  resetfilters() {
+    this.p = 1;
+    this.perpage = 20;
+    this.cropTerm = 'All';
+    this.pestOrDiseaseTerm = 'All';
+    this.diseaseTypeTerm = 'All';
+    this.term = '';
+    this.pestsdata = this.completepestsdata;
   }
 
   public removeItems() {

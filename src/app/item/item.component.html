@@ -1,3 +1,57 @@
-<p>
-  item works!
-</p>
+<div class="container breadcrumb">
+  <a routerLink='/main' style="padding-right: 10px;">Home</a> /  <span style="padding-left: 10px;">{{pest.common_name}}</span>
+  
+</div>
+<div class="container namerow">
+  <div class="commonnamediv"> {{pest.common_name}}</div>
+  <div class="othernamediv"[hidden]="pest.other_names===''"><span style="font-size: 1.1rem;font-weight: 600;">Other Names:</span> <div [innerHTML]="pest.other_names">{{pest.other_names}}</div></div>
+  <div class="othernamediv"><span style="font-size: 1.1rem;font-weight: 600;">Scientific Name:</span> <div [innerHTML]="pest.scientific_name">{{pest.scientific_name}}</div></div>
+  <div class="othernamediv"><span style="font-size: 1.1rem;font-weight: 600;">Plant Affected:</span> {{pest.plant_affected}}</div>
+
+
+</div>
+
+<div class="container descrow">
+  <div class="desccol">
+    <div [hidden]="pest.description===''">
+      <h4>Description</h4>
+      <div [innerHTML]="pest.description"></div>
+    </div>
+    <div [hidden]="pest.filipino_names===''">
+
+      <h4>Filipino Names</h4>
+      <div [innerHTML]="pest.filipino_names"></div>
+    </div>
+    <div [hidden]="pest.stages_of_development===''">
+      <h4>Stages of Development</h4>
+      <div [innerHTML]="pest.stages_of_development"></div>
+
+    </div>
+    <div [hidden]="pest.host_range===''">
+      <h4>Host Range</h4>
+      <p>{{pest.host_range}}</p>
+
+    </div>
+
+  </div>
+  <div class="imagecol">
+    <div style="margin:auto;">
+      <img src="./assets/pest2.jpg" style="width: 100%;">
+    </div>
+
+
+
+  </div>
+
+
+</div>
+<div class="container damagerow" [hidden]="pest.damage_characteristics===''">
+  <h4>Damage Characteristics</h4>
+  <div [innerHTML]="pest.damage_characteristics">{{pest.damage_characteristics}}</div>
+
+</div>
+<div class="container managementrow" [hidden]="pest.management_practice===''">
+  <h4>Management Practice</h4>
+  <div [innerHTML]="pest.management_practice">{{pest.management_practice}}</div>
+
+</div>
