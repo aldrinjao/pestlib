@@ -58,3 +58,22 @@ h4{
     font-weight: 400;
 
 }
+
+.desctitle{
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 900px) {
+    .descrow {
+        flex-direction: column-reverse;
+        
+    }
+
+    .imagecol img{
+        width: 100%;
+        margin: 20px;
+    }
+    .desccol, .imagecol{   
+        width: 100%;
+    }
+}

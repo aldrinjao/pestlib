@@ -1,15 +1,26 @@
+<div class="herocontainer">
+  <div class="hero">
+    <img src="./assets/bg.jpg" alt="">
+    <div class="text">
+      <span>Insect Pest and Disease Library</span>
+      <p class="textstyle2"><a href="http://sarai.ph/about-us" target="new">SARAi Project 2.4 Insect Pest and Disease
+          Advisory System
+          (IPDAS)</a></p>
+    </div>
+  </div>
+</div>
+
 <div class="container" style="display:inline;margin: 20px; text-align: center;">
 
-  <h4>Insect Pest and Disease Library</h4>
-  <h6><a href="http://sarai.ph/about-us" target="new">SARAi Project 2.4 Insect Pest and Disease Advisory System (IPDAS)</a></h6>
+  <h1>Click on a crop to view its pests and diseases</h1>
 </div>
 
 
-<div class="container" style="width: 100%;">
+<div class="container gridcontainer" style="width: 100%; background:#fbfbfb; border-radius: 5px;padding:20px;">
 
   <div class="cardcontainer">
     <a routerLink="rice">
-      <div class="card"  (click)="a()">
+      <div class="card" (click)="a()">
 
         <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
         <div class="card-body">
@@ -21,12 +32,12 @@
   </div>
 
   <div class="cardcontainer">
-    <a routerLink="rice">
-      <div class="card"  (click)="a()">
+    <a routerLink="corn">
+      <div class="card" (click)="a()">
 
-        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <img src="./assets/corn.jpg" class="card-img-top" alt="./assets/rice.jpg">
         <div class="card-body">
-          <div class="card-title"> Rice</div>
+          <div class="card-title">Corn</div>
           <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
         </div>
       </div>
@@ -34,12 +45,12 @@
   </div>
 
   <div class="cardcontainer">
-    <a routerLink="rice">
-      <div class="card"  (click)="a()">
+    <a routerLink="coffee">
+      <div class="card" (click)="a()">
 
-        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <img src="./assets/coffee.jpg" class="card-img-top" alt="./assets/rice.jpg">
         <div class="card-body">
-          <div class="card-title"> Rice</div>
+          <div class="card-title">Coffee</div>
           <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
         </div>
       </div>
@@ -47,12 +58,12 @@
   </div>
 
   <div class="cardcontainer">
-    <a routerLink="rice">
-      <div class="card"  (click)="a()">
+    <a routerLink="cacao">
+      <div class="card" (click)="a()">
 
-        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <img src="./assets/cacao.jpg" class="card-img-top" alt="./assets/rice.jpg">
         <div class="card-body">
-          <div class="card-title"> Rice</div>
+          <div class="card-title">Cacao</div>
           <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
         </div>
       </div>
@@ -60,12 +71,12 @@
   </div>
 
   <div class="cardcontainer">
-    <a routerLink="rice">
-      <div class="card"  (click)="a()">
+    <a routerLink="coconut">
+      <div class="card" (click)="a()">
 
-        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <img src="./assets/coconut.jpg" class="card-img-top" alt="./assets/rice.jpg">
         <div class="card-body">
-          <div class="card-title" style="color:black"> Rice</div>
+          <div class="card-title" style="color:black">Coconut</div>
           <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
         </div>
       </div>
@@ -73,12 +84,12 @@
   </div>
 
   <div class="cardcontainer">
-    <a routerLink="rice">
-      <div class="card"  (click)="a()">
+    <a routerLink="sugarcane">
+      <div class="card" (click)="a()">
 
-        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <img src="./assets/sugarcane.jpg" class="card-img-top" alt="./assets/rice.jpg">
         <div class="card-body">
-          <div class="card-title"> Rice</div>
+          <div class="card-title">Sugarcane</div>
           <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
         </div>
       </div>
@@ -86,12 +97,12 @@
   </div>
 
   <div class="cardcontainer">
-    <a routerLink="rice">
-      <div class="card"  (click)="a()">
+    <a routerLink="tomato">
+      <div class="card" (click)="a()">
 
-        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <img src="./assets/tomato.jpg" class="card-img-top" alt="./assets/rice.jpg">
         <div class="card-body">
-          <div class="card-title" style="color:black"> Rice</div>
+          <div class="card-title" style="color:black">Tomato</div>
           <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
         </div>
       </div>
@@ -99,29 +110,62 @@
   </div>
 
   <div class="cardcontainer">
-    <a routerLink="rice">
-      <div class="card"  (click)="a()">
+    <a routerLink="banana">
+      <div class="card" (click)="a()">
 
-        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <img src="./assets/banana.jpg" class="card-img-top" alt="./assets/rice.jpg">
         <div class="card-body">
-          <div class="card-title"> Rice</div>
-          <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
+          <div class="card-title">Banana</div>
         </div>
       </div>
+
     </a>
   </div>
 
   <div class="cardcontainer">
-    <a routerLink="rice">
-      <div class="card"  (click)="a()">
+    <a routerLink="soybeans">
+      <div class="card" (click)="a()">
 
-        <img src="./assets/rice.jpg" class="card-img-top" alt="./assets/rice.jpg">
+        <img src="./assets/soybeans.jpg" class="card-img-top" alt="./assets/rice.jpg">
         <div class="card-body">
-          <div class="card-title"> Rice</div>
+          <div class="card-title">Soybeans</div>
           <!-- <span class="card-subtitle mb-2 text-muted" style="font-style:italic;font-size: .75rem;">{{pest.scientific_name}}</span> -->
         </div>
       </div>
     </a>
   </div>
 
+</div>
+
+<div class="container" style="text-align: center;margin: 20px auto; background:#ffffff; border-radius: 4px;padding: 40px;">
+  <h1>SARAI SPIDTECH</h1>
+  <p style="text-align: left;">
+    Smarter Pest Identification Technology (SPIDTECH) is a multipurpose android application for digital pest and disease
+    identification. It provides a faster way of pest monitoring in different parts of the Philippines for different
+    agricultural industries. It also helps to bridge the gap between farmers and experts in terms of pest and disease
+    identification and consultation.
+  </p>
+  <p style="text-align: left;">
+    It provides feature in identification of major pests and diseases of the SARAI priority crops: rice, corn, coffee,
+    cacao, banana, sugarcane, coconut, soybean, tomato, aiming to benefit different sectors including, but not limited
+    to: farmers, agriculturists, extension workers, researchers, students, private sectors, and other agricultural
+    workers.
+  </p>
+
+  <a
+    href="https://play.google.com/store/apps/details?id=ph.sarai.ipdas.spidtech&hl=en&fbclid=IwAR07-1uzJjPz8IJwY0XGQ2OheuVoXw_GtSmjOebEaWbfjgzkR9jRde_TLMU"><img
+      src="./assets/spidtechbanner.jpg" style="width: 100%">
+  </a>
+<br>
+<br>
+<br>
+
+<h4 style="text-align: left;">Contact Information</h4>
+
+<p style="text-align: left;">Project 2.4 - Insect Pest and Disease Advisory System (IPDAS)<br>
+National Crop Protection Center<br>
+College of Agriculture and Food Science<br>
+University of the Philippines Los Baños<br>
+project.sarai.uplb@gmail.com
+</p>
 </div>

@@ -24,6 +24,7 @@ export interface Pest {
   management_practice: string;
   image_url: string;
   citation: string;
+  causal_type: string;
 }
 
 
@@ -52,7 +53,7 @@ export class CategoryComponent implements OnInit {
   itemperpage = 20;
   term = '';
   prevlabel = 'Prev';
-  urlcategory;
+
   constructor(db: AngularFireDatabase, private route: ActivatedRoute) {
     this.cropTerm = this.route.snapshot.paramMap.get('crop');
     this.items = db.list('items').valueChanges();
@@ -79,14 +80,15 @@ export class CategoryComponent implements OnInit {
             damage_characteristics: sample.damage_characteristics,
             management_practice: sample.management_practice,
             image_url: sample.image_url,
-            citation: sample.citation
+            citation: sample.citation,
+            causal_type: sample.causal_type
           };
           if (sample.plant_affected === this.cropTerm) {
             this.pestsdata.push(tempObject);
             this.completepestsdata = this.pestsdata;
           }
         });
-        this.pestsdata = this.shuffle(this.pestsdata);
+        // this.pestsdata = this.shuffle(this.pestsdata);
 
       },
       error: err => console.error('Observer got an error: ' + err),
@@ -103,9 +105,7 @@ export class CategoryComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log('22');
-    this.filterCrop();
-    console.log(this.pestsdata.length);
+    window.scroll(0, 0);
   }
 
   private shuffle(array) {
@@ -131,7 +131,6 @@ export class CategoryComponent implements OnInit {
 
 
   filterCrop() {
-    console.log('2');
     this.p = 1;
 
     if (this.pestOrDiseaseTerm === 'pest') {
@@ -144,6 +143,7 @@ export class CategoryComponent implements OnInit {
 
     let croptemp = this.completepestsdata;
     let cropordiseasetemp = this.completepestsdata;
+    let cropdiseasetypetemp = this.completepestsdata;
 
     if ((this.cropTerm !== 'All')) {
       croptemp = this.completepestsdata.filter(f => {
@@ -163,12 +163,31 @@ export class CategoryComponent implements OnInit {
       cropordiseasetemp = this.completepestsdata;
     }
 
+
+    if ((this.diseaseTypeTerm !== 'All')) {
+      cropdiseasetypetemp = this.completepestsdata.filter(f => {
+
+        return (f.causal_type === this.diseaseTypeTerm);
+      });
+    } else {
+      cropdiseasetypetemp = this.completepestsdata;
+    }
+
+
+
     // intersect 2 arrays
-    const result = croptemp.filter(v => { // iterate over the array
+    let result = croptemp.filter(v => { // iterate over the array
       // check sample present in the second array
       return cropordiseasetemp.indexOf(v) > -1;
       // or array2.includes(v)
     });
+
+    result = result.filter(v => { // iterate over the array
+      // check sample present in the second array
+      return cropdiseasetypetemp.indexOf(v) > -1;
+      // or array2.includes(v)
+    });
+
 
     this.pestsdata = result;
 
@@ -187,7 +206,6 @@ export class CategoryComponent implements OnInit {
   resetfilters() {
     this.p = 1;
     this.perpage = 20;
-    this.cropTerm = 'All';
     this.pestOrDiseaseTerm = 'All';
     this.diseaseTypeTerm = 'All';
     this.itemperpage = 20;
@@ -196,32 +214,7 @@ export class CategoryComponent implements OnInit {
   }
 
   public removeItems() {
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    this.pestsdata.pop();
-    console.log('this.pestdata :', this.pestsdata);
+
   }
 
 }
